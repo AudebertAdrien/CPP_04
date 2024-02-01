@@ -6,7 +6,7 @@
 #    By: motoko <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 14:26:47 by motoko            #+#    #+#              #
-#    Updated: 2024/01/30 17:58:38 by motoko           ###   ########.fr        #
+#    Updated: 2024/02/01 10:53:59 by motoko           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ VPATH			:= $(SRCS_DIR):
 SRCS			:= main.cpp				\
 				   Animal.cpp			\
 				   Dog.cpp				\
-				   Cat.cpp				
+				   Cat.cpp				\
+				   WrongAnimal.cpp		\
+				   WrongCat.cpp				
 
 CC				:= g++
 CFLAGS`			:= -g -Wall -Werror -Wextra 

@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:24:14 by motoko            #+#    #+#             */
-/*   Updated: 2024/01/31 15:21:38 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/01 12:07:35 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,38 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
+
 int main(void)
 {
-	const Animal* meta = new Animal();
+
 	std::cout << std::string(50,'#') << std::endl;
-	const Animal* j = new Dog();
-	std::cout << std::string(50,'#') << std::endl;
-	const Animal* i = new Cat();
+	const Animal* animal = new Animal();
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
+
+	std::cout << "getType : " <<  animal->getType() << " " << std::endl;
+	std::cout << "getType : " <<  dog->getType() << " " << std::endl;
+	std::cout << "getType : " <<  cat->getType() << " " << std::endl;
+
+	dog->makeSound();
+	cat->makeSound();
+	animal->makeSound();
+
+	delete(dog);
+	delete(cat);
+	delete(animal);
+
 	std::cout << std::string(50,'#') << std::endl;
 
-	std::cout << meta->getType() << " " << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	const WrongAnimal* wAnimal = new WrongAnimal();
+	const WrongAnimal* wCat = new WrongCat();
 
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+	wAnimal->makeSound();
+	wCat->makeSound();
 
-	delete(meta);
-	delete(j);
-	delete(i);
+	delete(wAnimal);
+	delete(wCat);
 	return (0);
 }
