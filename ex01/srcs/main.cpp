@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:24:14 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/05 11:31:37 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/05 15:04:50 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,41 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+#include "Brain.hpp"
+
 int main(void)
 {
-
-	std::cout << std::string(50,'#') << std::endl;
-	const Animal* animal = new Animal();
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
-
-	std::cout << "getType : " <<  animal->getType() << " " << std::endl;
-	std::cout << "getType : " <<  dog->getType() << " " << std::endl;
-	std::cout << "getType : " <<  cat->getType() << " " << std::endl;
-
-	dog->makeSound();
-	cat->makeSound();
-	animal->makeSound();
-
-	delete(dog);
-	delete(cat);
-	delete(animal);
-
 	std::cout << std::string(50,'#') << std::endl;
 
-	const WrongAnimal* wAnimal = new WrongAnimal();
-	const WrongAnimal* wCat = new WrongCat();
+	const int arraySize = 6;
+	Animal* animalArray[arraySize];
 
-	std::cout << "getType : " <<  wAnimal->getType() << " " << std::endl;
-	std::cout << "getType : " <<  wCat->getType() << " " << std::endl;
+	for (int i = 0; i < arraySize / 2; i++) {
+		animalArray[i] = new Dog();
+	}
+	for (int i = arraySize / 2; i < arraySize; i++) {
+		animalArray[i] = new Cat();
+	}
 
-	wAnimal->makeSound();
-	wCat->makeSound();
+	std::cout << std::string(50,'#') << std::endl;
+	for (int i = 0; i < arraySize; i++) {
+		delete animalArray[i];
+	}
 
-	delete(wAnimal);
-	delete(wCat);
+	std::cout << std::string(50,'#') << std::endl;
+	std::cout << std::string(50,'#') << std::endl;
+
+    Dog originalDog;
+	std::cout << std::string(50,'#') << std::endl;
+
+    Dog copiedDog = originalDog;
+	std::cout << std::string(50,'#') << std::endl;
+
+	Dog assignDog;
+	std::cout << std::string(50,'#') << std::endl;
+	assignDog = originalDog;
+	std::cout << std::string(50,'#') << std::endl;
+	
+	assignDog.display_ideas();
 	return (0);
 }
