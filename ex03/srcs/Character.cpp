@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:01:00 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/06 18:27:25 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/09 13:59:00 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Character::Character(void) {
 	std::cout << "Character constructor called" << std::endl;
+	this->_name = "Unknow";
 }
 
 Character::Character(std::string name) {
@@ -36,4 +37,19 @@ Character& Character::operator=(Character &src) {
 
 Character::~Character(void) {
 	std::cout << "Character destructor called" << std::endl;
+}
+
+std::string const& Character::getName() const {
+	std::cout << "Character getName" << std::endl;
+	return (_name);
+}
+
+void Character::equip(AMateria* m) {
+	std::cout << "Character equip" << std::endl;
+	materia_list[0] = m;
+}
+
+void use(int idx, Icharacter& target) {
+	std::cout << "Character use" << std::endl;
+	//materia_list[idx].use(target);	
 }

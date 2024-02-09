@@ -6,7 +6,7 @@
 #    By: motoko <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 14:26:47 by motoko            #+#    #+#              #
-#    Updated: 2024/02/06 16:07:27 by motoko           ###   ########.fr        #
+#    Updated: 2024/02/08 13:26:34 by motoko           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ VPATH			:= $(SRCS_DIR):
 
 SRCS			:= main.cpp				\
 				   Character.cpp		\
-				   ICharacter.cpp
+				   ICharacter.cpp		\
+				   AMateria.cpp			\
+				   Materia.cpp
 
 CC				:= g++
 CFLAGS`			:= -g -Wall -Werror -Wextra 

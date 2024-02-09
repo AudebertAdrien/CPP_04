@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   Materia.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 16:02:37 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 14:02:58 by motoko           ###   ########.fr       */
+/*   Created: 2024/02/08 13:17:57 by motoko            #+#    #+#             */
+/*   Updated: 2024/02/09 14:01:55 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-# define CHARACTER_HPP
+#ifndef MATERIA_HPP
+# define MATERIA_HPP
 
 #include <iostream>
 
 #include "ICharacter.hpp"
-#include "Character.hpp"
+#include "AMateria.hpp"
 
-class Character : public ICharacter {
+
+class Materia : public AMateria {
 	public:
-		Character();
-		Character(std::string name);
-		Character(Character &src);
-		Character& operator=(Character &src);
-		~Character();
+		Materia();
+		Materia(const std::string name);
+		Materia(const Materia &src);
+		Materia& operator=(const Materia &src);
+		~Materia();
 
-		std::string const& getName() const;
-		void equip(AMateria* m);
-
-	private:
-		std::string _name;
+		Materia*	clone() const;
+		void		use(ICharacter& target);
 };
 
 #endif
