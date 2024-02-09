@@ -1,0 +1,5 @@
+srcs/main.cpp: In function ‘int main()’:
+srcs/main.cpp:24:30: error: expected type-specifier before ‘Character’
+   24 |         ICharacter *m1 = new Character("TOTOT");
+      |                              ^~~~~~~~~
+make: *** [Makefile:45: objs/main.o] Error 1

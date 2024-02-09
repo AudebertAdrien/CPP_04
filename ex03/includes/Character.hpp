@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:02:37 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 14:02:58 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/09 17:08:13 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <iostream>
 
 #include "ICharacter.hpp"
-#include "Character.hpp"
+#include "AMateria.hpp"
+#include "Materia.hpp"
 
 class Character : public ICharacter {
 	public:
@@ -27,10 +28,12 @@ class Character : public ICharacter {
 		~Character();
 
 		std::string const& getName() const;
-		void equip(AMateria* m);
+		//void equip(AMateria* m);
+		//void use(int idx, ICharacter& target);
 
 	private:
 		std::string _name;
+		//AMateria** materia_list;
 };
 
 #endif

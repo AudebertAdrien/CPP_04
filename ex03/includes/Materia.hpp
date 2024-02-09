@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:17:57 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 14:01:55 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/09 17:12:17 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
 
-
 class Materia : public AMateria {
 	public:
 		Materia();
@@ -28,7 +27,7 @@ class Materia : public AMateria {
 		~Materia();
 
 		Materia*	clone() const;
-		void		use(ICharacter& target);
+	//	void		use(ICharacter& target);
 };
 
 #endif

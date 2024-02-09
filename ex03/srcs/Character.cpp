@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:01:00 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 13:59:00 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/09 17:07:57 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ Character::Character(void) {
 Character::Character(std::string name) {
 	std::cout << "Character constructor with parans called" << std::endl;
 	this->_name = name;
+	//materia_list[0] = new Materia("ice");
+	//materia_list[1] = new Materia("fire");
 }
 
 Character::Character(Character &src) {
@@ -43,13 +45,14 @@ std::string const& Character::getName() const {
 	std::cout << "Character getName" << std::endl;
 	return (_name);
 }
-
+/*
 void Character::equip(AMateria* m) {
 	std::cout << "Character equip" << std::endl;
-	materia_list[0] = m;
+	//materia_list[0] = m;
 }
 
-void use(int idx, Icharacter& target) {
+void Character::use(int idx, ICharacter& target) {
 	std::cout << "Character use" << std::endl;
-	//materia_list[idx].use(target);	
+//	materia_list[idx]->use(target);	
 }
+*/

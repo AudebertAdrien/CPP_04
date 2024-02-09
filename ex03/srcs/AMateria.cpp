@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:10:45 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 13:58:06 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:44:20 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,3 @@ std::string const& AMateria::getType() const {
 	std::cout << "AMateria getType : " << _type << std::endl;
 	return (_type);
 }
-/*
-void	AMateria::use(ICharacter& target)
-{
-	std::cout << "AMateria use! " << std::endl;
-}
-*/

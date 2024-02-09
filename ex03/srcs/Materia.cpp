@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:16:16 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 13:35:09 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/09 17:11:39 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ Materia* Materia::clone() const {
     return new Materia(*this);
 }
 
-void Materia::use(ICharacter* target)
-{
-	if (this->_type == "ice")	
-		std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-	if (this->_type == "Cure")	
-		std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
-}
+//void Materia::use(ICharacter& target)
+//{
+	//if (this->_type == "ice")	
+	//	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	//if (this->_type == "Cure")	
+	//	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+//}
