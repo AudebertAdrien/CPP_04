@@ -6,11 +6,12 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:16:16 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 17:11:39 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/13 15:16:16 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Materia.hpp"
+#include "ICharacter.hpp"
 
 Materia::Materia() : AMateria("Unknow") {
 	std::cout << "Materia constructor called" << std::endl;
@@ -36,14 +37,15 @@ Materia::~Materia(void) {
 	std::cout << "Materia destructor called" << std::endl;
 }
 
-Materia* Materia::clone() const {
-    return new Materia(*this);
+AMateria* Materia::clone() const {
+	AMateria *new_Amateria = new Materia(this->getType());
+    return (new_Amateria);
 }
 
-//void Materia::use(ICharacter& target)
-//{
-	//if (this->_type == "ice")	
-	//	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-	//if (this->_type == "Cure")	
-	//	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
-//}
+void Materia::use(ICharacter & target)
+{
+	if (this->_type == "ice")	
+		std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	if (this->_type == "cure")	
+		std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+}

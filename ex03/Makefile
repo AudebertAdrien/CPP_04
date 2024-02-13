@@ -6,7 +6,7 @@
 #    By: motoko <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 14:26:47 by motoko            #+#    #+#              #
-#    Updated: 2024/02/08 13:26:34 by motoko           ###   ########.fr        #
+#    Updated: 2024/02/12 14:52:26 by motoko           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ INCLUDES_DIR	:= includes
 VPATH			:= $(SRCS_DIR):
 
 SRCS			:= main.cpp				\
-				   Character.cpp		\
 				   ICharacter.cpp		\
+				   Character.cpp		\
 				   AMateria.cpp			\
 				   Materia.cpp
 

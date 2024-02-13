@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:17:57 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 17:12:17 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/13 15:04:34 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include <iostream>
 
-#include "ICharacter.hpp"
+class ICharacter;
+
 #include "AMateria.hpp"
 
 class Materia : public AMateria {
@@ -26,8 +27,8 @@ class Materia : public AMateria {
 		Materia& operator=(const Materia &src);
 		~Materia();
 
-		Materia*	clone() const;
-	//	void		use(ICharacter& target);
+		AMateria*	clone() const;
+		void		use(ICharacter& target);
 };
 
 #endif

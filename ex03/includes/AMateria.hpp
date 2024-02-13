@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:10:58 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 17:09:34 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/13 14:29:19 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 #include <iostream>
 
-//#include "ICharacter.hpp"
 class ICharacter;
 
 class AMateria {
 	public:
 			AMateria(std::string const& type);
 
-			virtual AMateria*	clone() const = 0;
-			virtual void		use(ICharacter& target);
-
 			std::string const&	getType() const;
+
+			virtual AMateria*	clone() const = 0;
+			virtual void		use(ICharacter & target);
+
 	protected:
 			std::string	_type;
 };

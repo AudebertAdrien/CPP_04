@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:00:15 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/09 17:26:22 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/13 16:38:23 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,39 +20,45 @@
 int	main(void)
 {
 
-	//Character p1("papyChulo");
-	ICharacter *m1 = new Character("TOTOT");
-	/*
+	Character p1("tata");
 	Character p2("tonton");
+	Character p3(p2);
 
 	std::cout << p1.getName() << std::endl;
 	std::cout << p2.getName() << std::endl;
+	std::cout << p3.getName() << std::endl;
 
 	std::cout << std::string(50, '#') << std::endl;
 
-	//AMateria *m1 = new Materia("ice");
-	//p1.equip(m1);
-	//p1.use(0, p2);
+	AMateria *m1 = new Materia("ice");
+	AMateria *m2 = new Materia("fire");
+	AMateria *m3 = new Materia("earth");
+	AMateria *m4 = new Materia("cure");
+
+	AMateria *m5 = new Materia("cure");
+
+	p1.equip(m1);
+	p1.equip(m2);
+	p1.equip(m3);
+	p1.equip(m4);
+
+	p1.use(0, p2);
+	p1.unequip(0);
+	p1.use(0, p2);
+
+	/*
+	p2.equip(m3);
+	p2.use(0, p2);
+	p2.unequip(0);
+	*/
+
 
 	std::cout << std::string(50, '#') << std::endl;
 
+	/*
 	AMateria *m2 = m1->clone();
-
-	std::cout << std::string(50, '#') <<  m2->getType() << std::endl;
-
-	Materia m3("fire");
-
-	std::cout << std::string(50, '#') << std::endl;
-
-	Materia *m4 = m3.clone();
-
-	std::cout << std::string(50, '#') << std::endl;
-	Character p2("p2");
-	std::cout << std::string(50, '#') << std::endl;
-	Character p3(p2);
-	std::cout << std::string(50, '#') << std::endl;
-	Character p4("p4");
 	std::cout << std::string(50, '#') << std::endl;
 	*/
+
 	return (0);
 }
