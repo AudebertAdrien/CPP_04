@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:01:00 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/13 16:38:17 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/14 17:20:00 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@
 Character::Character() {
 	std::cout << "Character constructor called" << std::endl;
 
-	this->_name = "Unknow";
+	this->_name = "NPC";
+	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
+		_materia_list[i] = NULL;
+		_ground_materia[i] = NULL;
+	}
 }
 
 Character::Character(std::string name) {
 	std::cout << "Character constructor with parans called" << std::endl;
 
 	this->_name = name;
-	for (int i = 0; i < AMATERIA_LIST_SIZE; i++)
+	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
 		_materia_list[i] = NULL;
+		_ground_materia[i] = NULL;
+	}
 }
 
 Character::Character(Character &src) {
@@ -44,6 +50,10 @@ Character& Character::operator=(Character &src) {
 
 Character::~Character(void) {
 	std::cout << "Character destructor called" << std::endl;
+	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
+		delete _materia_list[i];
+		delete _ground_materia[i];
+	}
 }
 
 std::string const& Character::getName() const {
@@ -68,20 +78,29 @@ void Character::equip(AMateria* m) {
 
 void Character::unequip(int idx) {
 	std::cout << "Character unequip" << std::endl;
+	AMateria *tmp;
 
-	if (idx >= 0 && idx <= 3) {
+	if (idx >= 0 && idx <= 3 && this->_materia_list[idx] != NULL) {
+		tmp = this->_materia_list[idx];
 		this->_materia_list[idx] = NULL;
-		delete _materia_list[idx];
 	} else {
 		std::cout << "error : Unequip index invalid!!!" << std::endl;
+	}
+	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
+		if (_ground_materia[i] == NULL)
+		{
+			this->_ground_materia[i] = tmp;
+			return ;
+		}
 	}
 }
 
 void Character::use(int idx, ICharacter& target) {
-	std::cout << this->getName() << " : "  << std::endl;
-	if (idx >= 0 && idx <= 3 && _materia_list[idx]) {
+	std::cout << this->getName() << " : " << this->_materia_list[idx]->getType() << std::endl;
+		
+	if (idx >= 0 && idx <= 3 && _materia_list[idx] != NULL) {
 		_materia_list[idx]->use(target);	
 	} else {
-		std::cout << "error : use index materia inventory invalid!!!" << std::endl;
+		std::cout << "error : Use index materia inventory invalid!!!" << std::endl;
 	}
 }

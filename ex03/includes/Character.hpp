@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:02:37 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/13 16:23:30 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:29:08 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ class Character : public ICharacter {
 
 	private:
 		std::string _name;
-		AMateria* _materia_list[AMATERIA_LIST_SIZE];
+		AMateria *_materia_list[AMATERIA_LIST_SIZE];
+		AMateria *_ground_materia[AMATERIA_LIST_SIZE];
 };
 
 #endif
