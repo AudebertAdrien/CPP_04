@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:01:00 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/14 17:20:00 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/14 17:51:32 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ Character& Character::operator=(Character &src) {
 
 	if (this != &src) {
 		this->_name = src._name;
+
+		for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
+			delete this->_materia_list[i];
+			_materia_list[i] = new Materia(src._materia_list[i]->getType());
+			delete this->_ground_materia[i];
+			_ground_materia[i] = new Materia(src._ground_materia[i]->getType());
+		}
+
 	}
 	return (*this);
 }
@@ -103,4 +111,15 @@ void Character::use(int idx, ICharacter& target) {
 	} else {
 		std::cout << "error : Use index materia inventory invalid!!!" << std::endl;
 	}
+}
+
+void	Character::displayInventory() {
+	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
+		if (_materia_list[i] == NULL)
+			std::cout << std::setw(10) << std::right << "empty" << "|";
+		else
+			std::cout << std::setw(10) << std::right << _materia_list[i]->getType() << "|";
+	}
+	std::cout << std::endl;
+
 }

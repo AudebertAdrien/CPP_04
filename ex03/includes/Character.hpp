@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:02:37 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/14 16:29:08 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/14 17:49:17 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CHARACTER_HPP
 
 #include <iostream>
+#include <iomanip>
 
 class AMateria;
 class Materia;
@@ -34,6 +35,7 @@ class Character : public ICharacter {
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
+		void displayInventory();
 
 	private:
 		std::string _name;

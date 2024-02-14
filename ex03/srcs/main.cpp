@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:00:15 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/14 14:14:32 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/14 17:51:52 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,17 @@ int	main(void)
 	AMateria *m3 = new Materia("earth");
 	AMateria *m4 = new Materia("cure");
 
-	AMateria *m5 = new Materia("cure");
 
 	p1.equip(m1);
 	p1.equip(m2);
 	p1.equip(m3);
 	p1.equip(m4);
+	p1.displayInventory();
 
 	p1.use(0, p2);
 	p1.unequip(0);
+	p1.displayInventory();
 	p1.use(0, p2);
-
-	/*
-	p2.equip(m3);
-	p2.use(0, p2);
-	p2.unequip(0);
-	*/
-
 
 	std::cout << std::string(50, '#') << std::endl;
 
