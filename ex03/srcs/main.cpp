@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:00:15 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/14 17:51:52 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/15 13:35:03 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@
 
 int	main(void)
 {
-
 	Character p1("tata");
 	Character p2("tonton");
-	Character p3(p2);
 
-	std::cout << p1.getName() << std::endl;
-	std::cout << p2.getName() << std::endl;
-	std::cout << p3.getName() << std::endl;
+	std::cout << "p1 : " << p1.getName() << std::endl;
+	std::cout << "p2 : " << p2.getName() << std::endl;
 
 	std::cout << std::string(50, '#') << std::endl;
 
@@ -49,10 +46,35 @@ int	main(void)
 
 	std::cout << std::string(50, '#') << std::endl;
 
-	/*
-	AMateria *m2 = m1->clone();
-	std::cout << std::string(50, '#') << std::endl;
-	*/
+	Character p3(p1);
+	std::cout << "p3 : " << p3.getName() << std::endl;
+	p3.displayInventory();
 
+	delete p1;
+	delete p2;
+	delete p3;
+
+	std::cout << std::string(50, '#') << std::endl;
+	std::cout << std::string(50, '#') << std::endl;
+
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter* me = new Character("me");
+
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
 	return (0);
 }
