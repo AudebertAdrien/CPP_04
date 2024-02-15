@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:41:49 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/15 14:28:08 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/15 16:33:04 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 
 #include "IMateriaSource.hpp"
+
+#define MATERIA_SOURCE_SIZE 4 
 
 class MateriaSource : public IMateriaSource {
 	public:
