@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:00:15 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/15 13:35:03 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/15 15:44:15 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 #include "Character.hpp"
 #include "ICharacter.hpp"
+
 #include "AMateria.hpp"
 #include "Materia.hpp"
+
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
+#include "Ice.hpp"
 
 int	main(void)
 {
@@ -50,17 +55,15 @@ int	main(void)
 	std::cout << "p3 : " << p3.getName() << std::endl;
 	p3.displayInventory();
 
-	delete p1;
-	delete p2;
-	delete p3;
-
 	std::cout << std::string(50, '#') << std::endl;
 	std::cout << std::string(50, '#') << std::endl;
 
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
+	/*
 	src->learnMateria(new Cure());
 
+	
 	ICharacter* me = new Character("me");
 
 	AMateria* tmp;
@@ -75,6 +78,7 @@ int	main(void)
 
 	delete bob;
 	delete me;
+	*/
 	delete src;
 	return (0);
 }
