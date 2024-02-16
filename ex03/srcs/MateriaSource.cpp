@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:40:46 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/15 15:13:42 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/15 16:33:21 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 MateriaSource::MateriaSource()  {
 	std::cout << "MateriaSource constructor called" << std::endl;
+	for (int i = 0; i < MATERIA_SOURCE_SIZE; i++)
+		_materias_source[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const std::string type) {
