@@ -5,24 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:36:37 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/15 14:36:04 by motoko           ###   ########.fr       */
+/*   Created: 2024/02/16 17:26:46 by motoko            #+#    #+#             */
+/*   Updated: 2024/02/16 17:26:47 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMATERIA_SOURCE_HPP
-# define IMATERIA_SOURCE_HPP
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
 
-#include <iostream>
-
-class AMateria;
+#include "AMateria.hpp"
 
 class IMateriaSource
 {
-	public:
-		virtual ~IMateriaSource() {}
-		virtual void learnMateria(AMateria*) = 0;
-		//virtual AMateria* createMateria(std::string const & type) = 0;
+
+public:
+    virtual ~IMateriaSource() {}
+    virtual void learnMateria(AMateria*) = 0;
+    virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
-#endif
+#endif // IMATERIASOURCE_HPP

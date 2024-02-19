@@ -6,7 +6,7 @@
 #    By: motoko <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 14:26:47 by motoko            #+#    #+#              #
-#    Updated: 2024/02/01 10:53:59 by motoko           ###   ########.fr        #
+#    Updated: 2024/02/19 15:49:10 by motoko           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS			:= main.cpp				\
 				   WrongCat.cpp				
 
 CC				:= g++
-CFLAGS`			:= -g -Wall -Werror -Wextra 
+CFLAGS			:= -ggdb3 -Wall -Werror -Wextra 
 
 ifdef STD
 CFLAGS			+= -std=$(STD)

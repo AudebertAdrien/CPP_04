@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Materia.hpp                                        :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 13:17:57 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/13 15:04:34 by motoko           ###   ########.fr       */
+/*   Created: 2024/02/16 17:26:16 by motoko            #+#    #+#             */
+/*   Updated: 2024/02/16 17:26:16 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIA_HPP
-# define MATERIA_HPP
-
-#include <iostream>
-
-class ICharacter;
+#ifndef CURE_HPP
+#define CURE_HPP
 
 #include "AMateria.hpp"
 
-class Materia : public AMateria {
-	public:
-		Materia();
-		Materia(const std::string name);
-		Materia(const Materia &src);
-		Materia& operator=(const Materia &src);
-		~Materia();
+class Cure : public AMateria
+{
+    public:
+        Cure();
+        ~Cure();
 
-		AMateria*	clone() const;
-		void		use(ICharacter& target);
+        Cure( Cure const & );
+        Cure& operator=( Cure const & );
+
+        virtual AMateria*   clone() const;
+        virtual void        use(ICharacter& target);
 };
 
-#endif
+#endif // CURE_HPP

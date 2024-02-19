@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:19 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/01 11:39:18 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:18:42 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ WrongCat::WrongCat(const WrongCat *src) : WrongAnimal("WrongCat") {
 
 WrongCat& WrongCat::operator=(const WrongCat &src) {
 	std::cout << "WrongCat constructor assignment operator called" << std::endl;
+	if (this != &src) {}
 	return (*this);
 }
 

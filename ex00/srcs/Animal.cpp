@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:19 by motoko            #+#    #+#             */
-/*   Updated: 2024/01/31 15:21:26 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:51:03 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Animal::Animal(const Animal *src) {
 
 Animal& Animal::operator=(const Animal &src) {
 	std::cout << "Animal constructor assignment operator called" << std::endl;
+	if (this != &src) {}
 	return (*this);
 }
 

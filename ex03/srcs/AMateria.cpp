@@ -5,26 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 13:10:45 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/15 16:21:30 by motoko           ###   ########.fr       */
+/*   Created: 2024/02/16 17:25:09 by motoko            #+#    #+#             */
+/*   Updated: 2024/02/16 17:25:10 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(std::string const& type) {
-	std::cout << "AMateria constructor with params called" << std::endl;
-	this->_type = type;
+AMateria::AMateria( void ) : _type("")
+{
+    // std::cout << "* AMateria: materia is created *" << std::endl;
 }
 
-std::string const& AMateria::getType() const {
-	static const  std::string empty = "Empty";
-
-	if (!this)
-		return (empty);
-	return (this->_type);
+AMateria::AMateria( std::string const & type )  : _type(type)
+{
+    std::cout << "AMateria " << this->_type << " created" << std::endl;
 }
 
-void	AMateria::use(ICharacter & target) {
-	std::cout << "AMateria:use" << std::endl;
+AMateria::AMateria( AMateria const & src )
+{
+    *this = src;
+}
+
+AMateria::~AMateria( void )
+{
+    std::cout << "AMateria " << this->_type << " destroyed" << std::endl;
+}
+
+std::string const & AMateria::getType() const
+{
+    return this->_type;
+}
+
+AMateria* AMateria::clone() const
+{
+    return (AMateria*)this;
+}
+
+void    AMateria::use( ICharacter& target )
+{
+    std::cout << "AMateria " << this->_type << " used on " << target.getName() << std::endl;
+}
 

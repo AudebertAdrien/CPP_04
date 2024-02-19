@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:19 by motoko            #+#    #+#             */
-/*   Updated: 2024/01/31 15:19:10 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:16:30 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Dog::Dog(const Dog *src) : Animal("Dog") {
 
 Dog& Dog::operator=(const Dog &src) {
 	std::cout << "Dog constructor assignment operator called" << std::endl;
+	if (this != &src) {}
 	return (*this);
 }
 

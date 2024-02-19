@@ -5,42 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 16:02:37 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/14 17:49:17 by motoko           ###   ########.fr       */
+/*   Created: 2024/02/16 17:26:06 by motoko            #+#    #+#             */
+/*   Updated: 2024/02/16 17:26:06 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
-# define CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include <iostream>
-#include <iomanip>
-
-class AMateria;
-class Materia;
-
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
-#define AMATERIA_LIST_SIZE 4
+class Character : public ICharacter
+{
 
-class Character : public ICharacter {
-	public:
-		Character();
-		Character(std::string name);
-		Character(Character &src);
-		Character& operator=(Character &src);
-		~Character();
+private:
+    std::string _name;
+    AMateria    *_inventory[4];
 
-		std::string const& getName() const;
-		void equip(AMateria* m);
-		void unequip(int idx);
-		void use(int idx, ICharacter& target);
-		void displayInventory();
+public:
+    Character(std::string const &name);
+    Character(Character const &src);
+    ~Character();
 
-	private:
-		std::string _name;
-		AMateria *_materia_list[AMATERIA_LIST_SIZE];
-		AMateria *_ground_materia[AMATERIA_LIST_SIZE];
+    Character&          operator=(Character const &rhs);
+
+    std::string const&  getName() const;
+    void                equip(AMateria* m);
+    void                unequip(int idx);
+    void                use(int idx, ICharacter& target);
 };
 
-#endif
+#endif // CHARACTER_HPP

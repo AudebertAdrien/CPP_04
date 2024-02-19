@@ -5,121 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 16:01:00 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/15 13:53:53 by motoko           ###   ########.fr       */
+/*   Created: 2024/02/16 17:25:19 by motoko            #+#    #+#             */
+/*   Updated: 2024/02/16 17:25:20 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "Character.hpp"
-#include "Materia.hpp"
 
-Character::Character() {
-	std::cout << "Character constructor called" << std::endl;
-
-	this->_name = "NPC";
-	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
-		_materia_list[i] = NULL;
-		_ground_materia[i] = NULL;
-	}
+Character::Character( std::string const & name ) : _name(name)
+{
+    for (int i = 0; i < 4; i++) {
+        this->_inventory[i] = NULL;
+    }
+    std::cout << "Character " << this->_name << " created" << std::endl;
 }
 
-Character::Character(std::string name) {
-	std::cout << "Character constructor with parans called" << std::endl;
-
-	this->_name = name;
-	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
-		_materia_list[i] = NULL;
-		_ground_materia[i] = NULL;
-	}
+Character::Character( Character const & src ) : _name(src._name)
+{
+    // for (int i = 0; i < 4; i++)
+    //     this->_inventory[i] = src._inventory[i];
+    *this = src;
+    std::cout << "Character " << this->_name << " created" << std::endl;
 }
 
-Character::Character(Character &src) {
-	std::cout << "Character constructor by copy called" << std::endl;
-
-	*this = src;
+Character& Character::operator=( Character const & rhs )
+{
+    if (this != &rhs)
+    {
+        this->_name = rhs._name;
+        for (int i = 0; i < 4; i++)
+            this->_inventory[i] = rhs._inventory[i];
+    }
+    return *this;
 }
 
-Character& Character::operator=(Character &src) {
-	std::cout << "Character constructor assignment operator called" << std::endl;
-
-	if (this != &src) {
-		this->_name = src._name;
-
-		for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
-			delete this->_materia_list[i];
-			_materia_list[i] = new Materia(src._materia_list[i]->getType());
-			delete this->_ground_materia[i];
-			_ground_materia[i] = new Materia(src._ground_materia[i]->getType());
-		}
-
-	}
-	return (*this);
+Character::~Character()
+{
+    std::cout << "Character " << this->_name << " destroyed" << std::endl;
+    for (int i = 0; i < 4; i++)
+        if (this->_inventory[i])
+            delete this->_inventory[i];
 }
 
-Character::~Character(void) {
-	std::cout << "Character destructor called" << std::endl;
-	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
-		delete _materia_list[i];
-		delete _ground_materia[i];
-	}
+void    Character::equip( AMateria* m ) {
+    for (int i = 0; i < 4; i++)
+        if (this->_inventory[i] == NULL)
+        {
+            this->_inventory[i] = m;
+            std::cout << "Character " << this->_name << " equipped with " << m->getType() << std::endl;
+            return;
+        }
+    std::cout << "Character " << this->_name << " can't equip " << m->getType() << std::endl;
+}
+
+void    Character::unequip( int idx ) {
+    if (this->_inventory[idx])
+    {
+        delete this->_inventory[idx];
+        this->_inventory[idx] = NULL;
+        std::cout << "Character " << this->_name << " unequipped" << std::endl;
+    }
+    else
+        std::cout << "Character " << this->_name << " can't unequip" << std::endl;
+}
+
+void    Character::use( int idx, ICharacter& target ) {
+    if (this->_inventory[idx])
+    {
+        this->_inventory[idx]->use(target);
+        std::cout << "Character " << this->_name << " uses " << this->_inventory[idx]->getType() << std::endl;
+    }
+    else
+        std::cout << "Character " << this->_name << " can't use" << std::endl;
 }
 
 std::string const& Character::getName() const {
-	return (_name);
-}
-
-void Character::equip(AMateria* m) {
-	std::cout << "Character equip" << std::endl;
-	int	count = 0;
-
-	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
-		if (_materia_list[i] == NULL)
-		{
-			this->_materia_list[i] = m;
-			return ;
-		}
-		count++;
-	}
-	if (count == 4)
-		std::cout << "error : Not enough space in the inventory!!!" << std::endl;
-}
-
-void Character::unequip(int idx) {
-	std::cout << "Character unequip" << std::endl;
-	AMateria *tmp;
-
-	if (idx >= 0 && idx <= 3 && this->_materia_list[idx] != NULL) {
-		tmp = this->_materia_list[idx];
-		this->_materia_list[idx] = NULL;
-	} else {
-		std::cout << "error : Unequip index invalid!!!" << std::endl;
-	}
-	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
-		if (_ground_materia[i] == NULL)
-		{
-			this->_ground_materia[i] = tmp;
-			return ;
-		}
-	}
-}
-
-void Character::use(int idx, ICharacter& target) {
-	std::cout << this->getName() << " : " << this->_materia_list[idx]->getType() << std::endl;
-		
-	if (idx >= 0 && idx <= 3 && _materia_list[idx] != NULL) {
-		_materia_list[idx]->use(target);	
-	} else {
-		std::cout << "error : Use index materia inventory invalid!!!" << std::endl;
-	}
-}
-
-void	Character::displayInventory() {
-	for (int i = 0; i < AMATERIA_LIST_SIZE; i++) {
-		if (_materia_list[i] == NULL)
-			std::cout << std::setw(10) << std::right << "empty" << "|";
-		else
-			std::cout << std::setw(10) << std::right << _materia_list[i]->getType() << "|";
-	}
-	std::cout << std::endl;
-
+    return this->_name;
 }

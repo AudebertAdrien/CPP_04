@@ -5,80 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 16:00:15 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/15 15:44:15 by motoko           ###   ########.fr       */
+/*   Created: 2024/02/16 17:25:50 by motoko            #+#    #+#             */
+/*   Updated: 2024/02/16 17:30:39 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#include <iostream>
 
 #include "Character.hpp"
 #include "ICharacter.hpp"
-
-#include "AMateria.hpp"
-#include "Materia.hpp"
-
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
 #include "Ice.hpp"
+#include "Cure.hpp"
 
-int	main(void)
+int main()
 {
-	Character p1("tata");
-	Character p2("tonton");
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
 
-	std::cout << "p1 : " << p1.getName() << std::endl;
-	std::cout << "p2 : " << p2.getName() << std::endl;
+    ICharacter* me = new Character("me");
 
-	std::cout << std::string(50, '#') << std::endl;
+    AMateria* tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
 
-	AMateria *m1 = new Materia("ice");
-	AMateria *m2 = new Materia("fire");
-	AMateria *m3 = new Materia("earth");
-	AMateria *m4 = new Materia("cure");
+    ICharacter* bob = new Character("bob");
 
+    me->use(0, *bob);
+    me->use(1, *bob);
 
-	p1.equip(m1);
-	p1.equip(m2);
-	p1.equip(m3);
-	p1.equip(m4);
-	p1.displayInventory();
+    delete bob;
+    delete me;
+    delete src;
 
-	p1.use(0, p2);
-	p1.unequip(0);
-	p1.displayInventory();
-	p1.use(0, p2);
-
-	std::cout << std::string(50, '#') << std::endl;
-
-	Character p3(p1);
-	std::cout << "p3 : " << p3.getName() << std::endl;
-	p3.displayInventory();
-
-	std::cout << std::string(50, '#') << std::endl;
-	std::cout << std::string(50, '#') << std::endl;
-
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	/*
-	src->learnMateria(new Cure());
-
-	
-	ICharacter* me = new Character("me");
-
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
-
-	delete bob;
-	delete me;
-	*/
-	delete src;
-	return (0);
+    return 0;
 }

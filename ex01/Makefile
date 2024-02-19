@@ -6,7 +6,7 @@
 #    By: motoko <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 14:26:47 by motoko            #+#    #+#              #
-#    Updated: 2024/02/01 14:24:43 by motoko           ###   ########.fr        #
+#    Updated: 2024/02/19 16:18:07 by motoko           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS			:= main.cpp				\
 				   Brain.cpp
 
 CC				:= g++
-CFLAGS`			:= -g -Wall -Werror -Wextra 
+CFLAGS			:= -ggdb3 -Wall -Werror -Wextra 
 
 ifdef STD
 CFLAGS			+= -std=$(STD)

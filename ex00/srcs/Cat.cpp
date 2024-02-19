@@ -6,7 +6,7 @@
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:19 by motoko            #+#    #+#             */
-/*   Updated: 2024/01/31 15:19:05 by motoko           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:16:45 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Cat::Cat(const Cat *src) : Animal("Cat") {
 
 Cat& Cat::operator=(const Cat &src) {
 	std::cout << "Cat constructor assignment operator called" << std::endl;
+	if (this != &src) {}
 	return (*this);
 }
 

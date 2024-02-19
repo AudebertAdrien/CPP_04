@@ -5,39 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: motoko <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:40:46 by motoko            #+#    #+#             */
-/*   Updated: 2024/02/15 16:33:21 by motoko           ###   ########.fr       */
+/*   Created: 2024/02/16 17:25:44 by motoko            #+#    #+#             */
+/*   Updated: 2024/02/16 17:25:44 by motoko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource()  {
-	std::cout << "MateriaSource constructor called" << std::endl;
-	for (int i = 0; i < MATERIA_SOURCE_SIZE; i++)
-		_materias_source[i] = NULL;
+MateriaSource::MateriaSource()
+{
+    for (int i = 0; i < 4; i++)
+        materias[i] = NULL;
 }
 
-MateriaSource::MateriaSource(const std::string type) {
-	std::cout << "MateriaSource constructor with params called" << std::endl;
+MateriaSource::~MateriaSource()
+{
+    for (int i = 0; i < 4; i++)
+        if (materias[i])
+            delete materias[i];
 }
 
-MateriaSource::MateriaSource(const MateriaSource &src) {
-	std::cout << "MateriaSource constructor by copy called" << std::endl;
-	*this = src;
+MateriaSource::MateriaSource(MateriaSource const & src)
+{
+    *this = src;
 }
 
-MateriaSource& MateriaSource::operator=(const MateriaSource &src)  {
-	std::cout << "MateriaSource constructor assignment operator called" << std::endl;
-	if (this != &src) {
-	}
-	return (*this);
+MateriaSource& MateriaSource::operator=( MateriaSource const & rhs )
+{
+    if (this != &rhs)
+    {
+        for (int i = 0; i < 4; i++)
+            materias[i] = rhs.materias[i];
+    }
+    return *this;
 }
 
-MateriaSource::~MateriaSource(void) {
-	std::cout << "MateriaSource destructor called" << std::endl;
+AMateria* MateriaSource::getMateria( std::string const & type )
+{
+    for (int i = 0; i < 4; i++)
+        if (materias[i] && materias[i]->getType() == type)
+            return materias[i];
+    return NULL;
 }
 
-void MateriaSource::learnMateria(AMateria* src) {
-	std::cout << "learnMateria destructor called" << std::endl;
+void    MateriaSource::learnMateria( AMateria* m )
+{
+    for (int i = 0; i < 4; i++)
+        if (materias[i] == NULL)
+        {
+            materias[i] = m;
+            // std::cout << "MateriaSource learned " << m->getType() << std::endl;
+            return;
+        }
+    // std::cout << "MateriaSource can't learn " << m->getType() << std::endl;
+}
+
+AMateria*   MateriaSource::createMateria( std::string const& type ) {
+    for ( int i = 0; i < 4; i++ )
+        if ( materias[i] && materias[i]->getType() == type )
+            return materias[i]->clone();
+    return NULL;
 }

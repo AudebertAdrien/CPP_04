@@ -6,7 +6,7 @@
 #    By: motoko <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 14:26:47 by motoko            #+#    #+#              #
-#    Updated: 2024/02/15 14:30:58 by motoko           ###   ########.fr        #
+#    Updated: 2024/02/19 16:19:55 by motoko           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,16 +18,15 @@ INCLUDES_DIR	:= includes
 VPATH			:= $(SRCS_DIR):
 
 SRCS			:= main.cpp				\
-				   ICharacter.cpp		\
 				   Character.cpp		\
 				   AMateria.cpp			\
-				   Materia.cpp			\
 				   MateriaSource.cpp	\
-				   Ice.cpp
+				   Ice.cpp				\
+				   Cure.cpp
 
 
 CC				:= g++
-CFLAGS`			:= -g -Wall -Werror -Wextra 
+CFLAGS			:= -ggdb3 -Wall -Werror -Wextra 
 
 ifdef STD
 CFLAGS			+= -std=$(STD)
